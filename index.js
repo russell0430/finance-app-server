@@ -24,16 +24,16 @@ app.use(cors())
 const timeoutSecond = 7000
 app.use((req, res, next) => {
   const id = setTimeout(() => {
-    res.json({ messgae: "There are something wrong with the application" })
+    res
+      .json({ messgae: "There are something wrong with the application" })
+      .end()
   }, timeoutSecond)
-  next(() => {
-    clearTimeout(id)
-  })
+  next()
 })
 // Routes
-app.use("/kpi", kpiRoutes)
-app.use("/product", productRoutes)
-app.use("/transaction", transactionRoutes)
+// app.use("/kpi", kpiRoutes)
+// app.use("/product", productRoutes)
+// app.use("/transaction", transactionRoutes)
 
 app.get("/", (req, res) => {
   res.send("Hello wrold!\ny You made it successfully")
@@ -42,12 +42,12 @@ app.get("/", (req, res) => {
 // Mongoose Setup
 
 const PORT = process.env.PORT || 8080
-await mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .catch((error) => console.log(`${error} \nMongoDB did not connect`))
+// await mongoose
+//   .connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .catch((error) => console.log(`${error} \nMongoDB did not connect`))
 
 app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
 
