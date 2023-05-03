@@ -30,9 +30,9 @@ const timeoutSecond = 7000
 //   next()
 // })
 // Routes
-// app.use("/kpi", kpiRoutes)
-// app.use("/product", productRoutes)
-// app.use("/transaction", transactionRoutes)
+app.use("/kpi", kpiRoutes)
+app.use("/product", productRoutes)
+app.use("/transaction", transactionRoutes)
 
 app.get("/", (req, res) => {
   res.send("Hello wrold! \n You made it successfully")
