@@ -41,14 +41,17 @@ app.get("/", (req, res) => {
 // Mongoose Setup
 
 const PORT = process.env.PORT || 8080
-// await mongoose
-//   .connect(process.env.MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .catch((error) => console.log(`${error} \nMongoDB did not connect`))
 
-app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
+  })
+  .catch((error) => console.log(`${error} \nMongoDB did not connect`))
+
 
 /* ADD DATA ONE TIME ONLY OR AS NEEDED */
 // await mongoose.connection.db.dropDatabase();
