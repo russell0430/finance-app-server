@@ -26,7 +26,6 @@ app.use((req, res, next) => {
   const id = setTimeout(() => {
     res
       .json({ messgae: "There are something wrong with the application" })
-      .end()
   }, timeoutSecond)
   next()
 })
@@ -36,7 +35,7 @@ app.use((req, res, next) => {
 // app.use("/transaction", transactionRoutes)
 
 app.get("/", (req, res) => {
-  res.send("Hello wrold!\ny You made it successfully")
+  res.send("Hello wrold! \n You made it successfully")
 })
 
 // Mongoose Setup
