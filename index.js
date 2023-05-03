@@ -22,13 +22,13 @@ app.use(cors())
 
 // debug
 const timeoutSecond = 7000
-app.use((req, res, next) => {
-  const id = setTimeout(() => {
-    res
-      .json({ messgae: "There are something wrong with the application" })
-  }, timeoutSecond)
-  next()
-})
+// app.use((req, res, next) => {
+//   const id = setTimeout(() => {
+//     res
+//       .json({ messgae: "There are something wrong with the application" })
+//   }, timeoutSecond)
+//   next()
+// })
 // Routes
 // app.use("/kpi", kpiRoutes)
 // app.use("/product", productRoutes)
