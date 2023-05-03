@@ -7,10 +7,10 @@ import kpiRoutes from "./routes/kpi.js"
 import productRoutes from "./routes/product.js"
 import transactionRoutes from "./routes/transaction.js"
 
-import { kpis, products, transactions } from "./data/data.js"
-import KPI from "./models/KPI.js"
-import Product from "./models/Product.js"
-import Transaction from "./models/transaction.js"
+// import { kpis, products, transactions } from "./data/data.js"
+// import KPI from "./models/KPI.js"
+// import Product from "./models/Product.js"
+// import Transaction from "./models/Transaction.js"
 // Configuration
 dotenv.config()
 const app = express()
@@ -27,7 +27,7 @@ app.use("/transaction", transactionRoutes)
 
 // Mongoose Setup
 
-const PORT = process.env.PORT || 9000
+const PORT = process.env.PORT || 8080
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
