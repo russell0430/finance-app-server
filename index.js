@@ -31,23 +31,22 @@ app.get("/", (req, res) => {
 // Mongoose Setup
 
 const PORT = process.env.PORT || 8080
-mongoose
+await mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(async () => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
-
-    /* ADD DATA ONE TIME ONLY OR AS NEEDED */
-    // await mongoose.connection.db.dropDatabase();
-
-    // KPI.insertMany(kpis);
-    // Product.insertMany(products);
-    // Transaction.insertMany(transactions);
-    // console.log("done")
-  })
   .catch((error) => console.log(`${error} \nMongoDB did not connect`))
+
+app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
+
+/* ADD DATA ONE TIME ONLY OR AS NEEDED */
+// await mongoose.connection.db.dropDatabase();
+
+// KPI.insertMany(kpis);
+// Product.insertMany(products);
+// Transaction.insertMany(transactions);
+
 
 // fix bug
 // https://stackoverflow.com/questions/75565239/no-exports-found-in-module-error-when-deploying-express-rest-api-on-vercel
