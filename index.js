@@ -20,6 +20,16 @@ app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
 app.use(cors())
 
+// debug
+const timeoutSecond = 7000
+app.use((req, res, next) => {
+  const id = setTimeout(() => {
+    res.json({ messgae: "There are something wrong with the application" })
+  }, timeoutSecond)
+  next(() => {
+    clearTimeout(id)
+  })
+})
 // Routes
 app.use("/kpi", kpiRoutes)
 app.use("/product", productRoutes)
@@ -28,6 +38,7 @@ app.use("/transaction", transactionRoutes)
 app.get("/", (req, res) => {
   res.send("Hello wrold!\ny You made it successfully")
 })
+
 // Mongoose Setup
 
 const PORT = process.env.PORT || 8080
@@ -46,7 +57,6 @@ app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
 // KPI.insertMany(kpis);
 // Product.insertMany(products);
 // Transaction.insertMany(transactions);
-
 
 // fix bug
 // https://stackoverflow.com/questions/75565239/no-exports-found-in-module-error-when-deploying-express-rest-api-on-vercel
