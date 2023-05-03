@@ -25,6 +25,9 @@ app.use("/kpi", kpiRoutes)
 app.use("/product", productRoutes)
 app.use("/transaction", transactionRoutes)
 
+app.get("/", (req, res) => {
+  res.send("Hello wrold!\ny You made it successfully")
+})
 // Mongoose Setup
 
 const PORT = process.env.PORT || 8080
@@ -45,3 +48,7 @@ mongoose
     // console.log("done")
   })
   .catch((error) => console.log(`${error} \nMongoDB did not connect`))
+
+// fix bug
+// https://stackoverflow.com/questions/75565239/no-exports-found-in-module-error-when-deploying-express-rest-api-on-vercel
+export default app
