@@ -6,7 +6,7 @@ const router = express.Router()
 router.get("/kpis", async (req, res) => {
   const id = setTimeout(() => {
     res.status(500).json({ message: "Timeout" })
-  })
+  } ,process.env.TIMEOUT || 9000)
   try {
     const kpis = await KPI.find()
     clearTimeout(id)

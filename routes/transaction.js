@@ -6,7 +6,7 @@ const router = express.Router()
 router.get("/transactions", async (req, res) => {
   const id = setTimeout(() => {
     res.status(500).json({ message: "Timeout" })
-  })
+  }, process.env.TIMEOUT || 9000)
   try {
     const transactions = await Transaction.find()
       .limit(50)

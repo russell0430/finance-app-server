@@ -6,7 +6,7 @@ const router = express.Router()
 router.get("/products", async (req, res) => {
   const id = setTimeout(() => {
     res.status(500).json({ message: "Timeout" })
-  })
+  }, process.env.TIMEOUT || 9000)
   try {
     const products = await Product.find()
     clearTimeout(id)
